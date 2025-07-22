@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -77,6 +78,10 @@ public final class SimpleLogRecordProcessor implements LogRecordProcessor {
           () -> {
             pendingExports.remove(result);
             if (!result.isSuccess()) {
+              Consumer<ReadWriteLogRecord> consumer = context.get(ExportErrorContext.KEY);
+              if (consumer != null) {
+                consumer.accept(logRecord);
+              }
               logger.log(Level.FINE, "Exporter failed");
             }
           });
