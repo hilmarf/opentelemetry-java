@@ -225,9 +225,9 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
     private void addLog(ReadWriteLogRecord logData, Context context) {
       if (!queue.offer(logData)) {
         processedLogsCounter.add(1, droppedAttrs);
-        Consumer<ReadWriteLogRecord> consumer = context.get(ExportErrorContext.KEY);
+        Consumer<Collection<LogRecordData>> consumer = context.get(ExportErrorContext.KEY);
         if (consumer != null) {
-          consumer.accept(logData);
+          consumer.accept(Collections.singleton(logData.toLogRecordData()));
         }
       } else {
         if (queue.size() >= logsNeeded.get()) {

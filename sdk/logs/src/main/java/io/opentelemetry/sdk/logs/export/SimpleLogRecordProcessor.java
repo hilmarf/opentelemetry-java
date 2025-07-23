@@ -12,6 +12,7 @@ import io.opentelemetry.sdk.common.CompletableResultCode;
 import io.opentelemetry.sdk.logs.LogRecordProcessor;
 import io.opentelemetry.sdk.logs.ReadWriteLogRecord;
 import io.opentelemetry.sdk.logs.data.LogRecordData;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -78,9 +79,9 @@ public final class SimpleLogRecordProcessor implements LogRecordProcessor {
           () -> {
             pendingExports.remove(result);
             if (!result.isSuccess()) {
-              Consumer<ReadWriteLogRecord> consumer = context.get(ExportErrorContext.KEY);
+              Consumer<Collection<LogRecordData>> consumer = context.get(ExportErrorContext.KEY);
               if (consumer != null) {
-                consumer.accept(logRecord);
+                consumer.accept(Collections.singleton(logRecord.toLogRecordData()));
               }
               logger.log(Level.FINE, "Exporter failed");
             }
