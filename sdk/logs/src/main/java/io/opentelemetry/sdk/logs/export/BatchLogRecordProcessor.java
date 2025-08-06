@@ -17,6 +17,7 @@ import io.opentelemetry.sdk.logs.LogRecordProcessor;
 import io.opentelemetry.sdk.logs.ReadWriteLogRecord;
 import io.opentelemetry.sdk.logs.data.LogRecordData;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
@@ -26,8 +27,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 /**
  * Implementation of the {@link LogRecordProcessor} that batches logs exported by the SDK then
@@ -71,7 +74,8 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
       long scheduleDelayNanos,
       int maxQueueSize,
       int maxExportBatchSize,
-      long exporterTimeoutNanos) {
+      long exporterTimeoutNanos,
+      @Nullable Consumer<Collection<LogRecordData>> errorConsumer) {
     this.worker =
         new Worker(
             logRecordExporter,
@@ -79,7 +83,8 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
             scheduleDelayNanos,
             maxExportBatchSize,
             exporterTimeoutNanos,
-            new ArrayBlockingQueue<>(maxQueueSize)); // TODO: use JcTools.newFixedSizeQueue(..)
+            new ArrayBlockingQueue<>(maxQueueSize), // TODO: use JcTools.newFixedSizeQueue(..)
+            errorConsumer);
     Thread workerThread = new DaemonThreadFactory(WORKER_THREAD_NAME).newThread(worker);
     workerThread.start();
   }
@@ -89,7 +94,7 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
     if (logRecord == null) {
       return;
     }
-    worker.addLog(logRecord);
+    worker.addLog(logRecord, context);
   }
 
   @Override
@@ -164,13 +169,16 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
     private volatile boolean continueWork = true;
     private final ArrayList<LogRecordData> batch;
 
+    @Nullable private final Consumer<Collection<LogRecordData>> errorConsumer;
+
     private Worker(
         LogRecordExporter logRecordExporter,
         MeterProvider meterProvider,
         long scheduleDelayNanos,
         int maxExportBatchSize,
         long exporterTimeoutNanos,
-        Queue<ReadWriteLogRecord> queue) {
+        Queue<ReadWriteLogRecord> queue,
+        @Nullable Consumer<Collection<LogRecordData>> errorConsumer) {
       this.logRecordExporter = logRecordExporter;
       this.scheduleDelayNanos = scheduleDelayNanos;
       this.maxExportBatchSize = maxExportBatchSize;
@@ -211,11 +219,16 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
               false);
 
       this.batch = new ArrayList<>(this.maxExportBatchSize);
+      this.errorConsumer = errorConsumer;
     }
 
-    private void addLog(ReadWriteLogRecord logData) {
+    private void addLog(ReadWriteLogRecord logData, Context context) {
       if (!queue.offer(logData)) {
         processedLogsCounter.add(1, droppedAttrs);
+        Consumer<Collection<LogRecordData>> consumer = context.get(ExportErrorContext.KEY);
+        if (consumer != null) {
+          consumer.accept(Collections.singleton(logData.toLogRecordData()));
+        }
       } else {
         if (queue.size() >= logsNeeded.get()) {
           signal.offer(true);
@@ -324,6 +337,12 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
           processedLogsCounter.add(batch.size(), exportedAttrs);
         } else {
           logger.log(Level.FINE, "Exporter failed");
+          if (errorConsumer != null) {
+            // If the exporter failed, we call the error consumer with the batch.
+            // This allows the user to handle the error, e.g., by logging it or sending it to a
+            // different exporter.
+            errorConsumer.accept(batch);
+          }
         }
       } catch (RuntimeException e) {
         logger.log(Level.WARNING, "Exporter threw an Exception", e);
