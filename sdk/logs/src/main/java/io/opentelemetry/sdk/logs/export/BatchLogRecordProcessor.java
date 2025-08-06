@@ -336,7 +336,7 @@ public final class BatchLogRecordProcessor implements LogRecordProcessor {
         if (result.isSuccess()) {
           processedLogsCounter.add(batch.size(), exportedAttrs);
         } else {
-          logger.log(Level.WARNING, "Exporter failed");
+          logger.log(Level.FINE, "Exporter failed");
           if (errorConsumer != null) {
             // If the exporter failed, we call the error consumer with the batch.
             // This allows the user to handle the error, e.g., by logging it or sending it to a
