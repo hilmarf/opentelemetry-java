@@ -16,7 +16,7 @@ val mockitoVersion = "4.11.0"
 val slf4jVersion = "2.0.17"
 val opencensusVersion = "0.31.1"
 val prometheusServerVersion = "1.3.10"
-val armeriaVersion = "1.33.1"
+val armeriaVersion = "1.33.2"
 val junitVersion = "5.13.4"
 val okhttpVersion = "5.1.0"
 
@@ -26,13 +26,13 @@ val DEPENDENCY_BOMS = listOf(
   // (which is EPL licensed) or armeria bom (which is Apache licensed but is getting flagged
   // by FOSSA for containing EPL-licensed)
 
-  "com.fasterxml.jackson:jackson-bom:2.19.2",
+  "com.fasterxml.jackson:jackson-bom:2.20.0",
   "com.google.guava:guava-bom:33.4.8-jre",
   "com.google.protobuf:protobuf-bom:4.32.0",
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
   "com.squareup.okio:okio-bom:3.16.0", // applies to transitive dependencies of okhttp
   "io.grpc:grpc-bom:1.75.0",
-  "io.netty:netty-bom:4.2.4.Final",
+  "io.netty:netty-bom:4.2.5.Final",
   "io.zipkin.brave:brave-bom:6.3.0",
   "io.zipkin.reporter2:zipkin-reporter-bom:3.5.1",
   "org.assertj:assertj-bom:3.27.4",
@@ -81,7 +81,7 @@ val DEPENDENCIES = listOf(
   "io.github.netmikey.logunit:logunit-jul:2.0.0",
   "io.jaegertracing:jaeger-client:1.8.1",
   "io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:1.49.0-alpha",
-  "io.opentelemetry.semconv:opentelemetry-semconv-incubating:1.36.0-alpha",
+  "io.opentelemetry.semconv:opentelemetry-semconv-incubating:1.37.0-alpha",
   "io.opentelemetry.proto:opentelemetry-proto:1.7.0-alpha",
   "io.opentracing:opentracing-api:0.33.0",
   "io.opentracing:opentracing-noop:0.33.0",
