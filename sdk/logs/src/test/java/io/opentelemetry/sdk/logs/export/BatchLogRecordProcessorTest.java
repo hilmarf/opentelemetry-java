@@ -546,7 +546,7 @@ class BatchLogRecordProcessorTest {
     }
   }
 
-  private static class CompletableLogRecordExporter implements LogRecordExporter {
+  static class CompletableLogRecordExporter implements LogRecordExporter {
 
     private final List<CompletableResultCode> results = new ArrayList<>();
 

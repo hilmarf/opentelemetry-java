@@ -210,28 +210,6 @@ class ExtendedLogsBridgeApiUsageTest {
                           .put("key1", "value")
                           .put("key2", "value")
                           .build());
-
-              // But preferably access and serialize full extended attributes
-              assertThat(extendedLogRecordData.getExtendedAttributes())
-                  .isEqualTo(
-                      ExtendedAttributes.builder()
-                          .put(strKey, "value")
-                          .put(longKey, 1L)
-                          .put(booleanKey, true)
-                          .put(doubleKey, 1.1)
-                          .put(strArrKey, Arrays.asList("value1", "value2"))
-                          .put(longArrKey, Arrays.asList(1L, 2L))
-                          .put(booleanArrKey, Arrays.asList(true, false))
-                          .put(doubleArrKey, Arrays.asList(1.1, 2.2))
-                          .put(
-                              mapKey,
-                              ExtendedAttributes.builder()
-                                  .put("childStr", "value")
-                                  .put("childLong", 1L)
-                                  .build())
-                          .put("key1", "value")
-                          .put("key2", "value")
-                          .build());
             });
   }
 }

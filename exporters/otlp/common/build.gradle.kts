@@ -23,6 +23,7 @@ dependencies {
   compileOnly(project(":sdk:trace"))
   compileOnly(project(":sdk:logs"))
   compileOnly(project(":api:incubator"))
+  compileOnly("com.fasterxml.jackson.core:jackson-databind")
 
   testImplementation(project(":sdk:metrics"))
   testImplementation(project(":sdk:trace"))

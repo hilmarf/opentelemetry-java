@@ -36,23 +36,21 @@ final class MultiLogRecordExporter implements LogRecordExporter {
    * @return the aggregate log exporter
    */
   static LogRecordExporter create(List<LogRecordExporter> logRecordExporters) {
-    return new MultiLogRecordExporter(logRecordExporters.toArray(new LogRecordExporter[0]));
+    return new MultiLogRecordExporter(
+        logRecordExporters.toArray(new LogRecordExporter[logRecordExporters.size()]));
   }
 
   @Override
   public CompletableResultCode export(Collection<LogRecordData> logs) {
     List<CompletableResultCode> results = new ArrayList<>(logRecordExporters.length);
     for (LogRecordExporter logRecordExporter : logRecordExporters) {
-      CompletableResultCode exportResult;
       try {
-        exportResult = logRecordExporter.export(logs);
+        results.add(logRecordExporter.export(logs));
       } catch (RuntimeException e) {
         // If an exception was thrown by the exporter
         logger.log(Level.WARNING, "Exception thrown by the export.", e);
-        results.add(CompletableResultCode.ofFailure());
-        continue;
+        results.add(CompletableResultCode.ofExceptionalFailure(e));
       }
-      results.add(exportResult);
     }
     return CompletableResultCode.ofAll(results);
   }
@@ -66,16 +64,13 @@ final class MultiLogRecordExporter implements LogRecordExporter {
   public CompletableResultCode flush() {
     List<CompletableResultCode> results = new ArrayList<>(logRecordExporters.length);
     for (LogRecordExporter logRecordExporter : logRecordExporters) {
-      CompletableResultCode flushResult;
       try {
-        flushResult = logRecordExporter.flush();
+        results.add(logRecordExporter.flush());
       } catch (RuntimeException e) {
         // If an exception was thrown by the exporter
         logger.log(Level.WARNING, "Exception thrown by the flush.", e);
-        results.add(CompletableResultCode.ofFailure());
-        continue;
+        results.add(CompletableResultCode.ofExceptionalFailure(e));
       }
-      results.add(flushResult);
     }
     return CompletableResultCode.ofAll(results);
   }
@@ -84,16 +79,13 @@ final class MultiLogRecordExporter implements LogRecordExporter {
   public CompletableResultCode shutdown() {
     List<CompletableResultCode> results = new ArrayList<>(logRecordExporters.length);
     for (LogRecordExporter logRecordExporter : logRecordExporters) {
-      CompletableResultCode shutdownResult;
       try {
-        shutdownResult = logRecordExporter.shutdown();
+        results.add(logRecordExporter.shutdown());
       } catch (RuntimeException e) {
         // If an exception was thrown by the exporter
         logger.log(Level.WARNING, "Exception thrown by the shutdown.", e);
-        results.add(CompletableResultCode.ofFailure());
-        continue;
+        results.add(CompletableResultCode.ofExceptionalFailure(e));
       }
-      results.add(shutdownResult);
     }
     return CompletableResultCode.ofAll(results);
   }
