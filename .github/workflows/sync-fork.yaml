@@ -3,14 +3,16 @@ on:
   schedule:
     - cron: '4 2 * * 4,2'
   workflow_dispatch:
-permissions:
-  contents: write
-  workflow: write
 jobs:
   sync-fork:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - run: gh repo sync $REPOSITORY -b $BRANCH_NAME
+      - run: |
+          gh auth login --hostname $GITHUB_SERVER_URL --with-token < $GITHUB_TOKEN
+          gh auth refresh --scopes workflow --hostname $GITHUB_SERVER_URL
+          gh repo sync $REPOSITORY -b $BRANCH_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
