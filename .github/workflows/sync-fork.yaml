@@ -9,12 +9,15 @@ jobs:
     permissions:
       contents: write
     steps:
-      - run: |
-          gh auth login
-          gh auth refresh --scopes workflow
-          gh repo sync $REPOSITORY -b $BRANCH_NAME
+      - run: gh auth login --with-token < $GITHUB_TOKEN
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_HOST: github.com
+      - run: gh auth refresh --scopes workflow
+        env:
+          GH_HOST: github.com
+      - run: gh repo sync $REPOSITORY -b $BRANCH_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: ${{ github.repository }}
           BRANCH_NAME: ${{ github.ref_name }}
