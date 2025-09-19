@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - run: gh auth login --with-token < $GITHUB_TOKEN
+      - run: echo "${GITHUB_TOKEN}" | gh auth login --with-token
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_HOST: github.com
