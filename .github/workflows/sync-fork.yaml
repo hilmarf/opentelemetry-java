@@ -10,7 +10,7 @@ jobs:
       contents: write
     steps:
       - run: |
-          gh auth refresh -s workflow
+          gh auth refresh --scopes workflow --hostname $GITHUB_SERVER_URL
           gh repo sync $REPOSITORY -b $BRANCH_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
