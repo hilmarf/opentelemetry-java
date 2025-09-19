@@ -3,12 +3,12 @@ on:
   schedule:
     - cron: '4 2 * * 4,2'
   workflow_dispatch:
+permissions:
+  contents: write
+  workflow: write
 jobs:
   sync-fork:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      workflow: write
     steps:
       - run: gh repo sync $REPOSITORY -b $BRANCH_NAME
         env:
