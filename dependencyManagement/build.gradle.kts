@@ -9,7 +9,7 @@ rootProject.extra["versions"] = dependencyVersions
 
 
 val autoValueVersion = "1.11.0"
-val errorProneVersion = "2.41.0"
+val errorProneVersion = "2.42.0"
 val jmhVersion = "1.37"
 // Mockito 5.x.x requires Java 11 https://github.com/mockito/mockito/releases/tag/v5.0.0
 val mockitoVersion = "4.11.0"
@@ -35,7 +35,7 @@ val DEPENDENCY_BOMS = listOf(
   "io.netty:netty-bom:4.2.6.Final",
   "io.zipkin.brave:brave-bom:6.3.0",
   "io.zipkin.reporter2:zipkin-reporter-bom:3.5.1",
-  "org.assertj:assertj-bom:3.27.4",
+  "org.assertj:assertj-bom:3.27.6",
   "org.testcontainers:testcontainers-bom:1.21.3",
   "org.snakeyaml:snakeyaml-engine:2.10"
 )
@@ -73,7 +73,7 @@ val DEPENDENCIES = listOf(
   "com.google.code.findbugs:jsr305:3.0.2",
   "com.google.guava:guava-beta-checker:1.0",
   "com.sun.net.httpserver:http:20070405",
-  "com.squareup.okhttp3:okhttp-jvm:$okhttpVersion",
+  "com.squareup.okhttp3:okhttp:$okhttpVersion",
   "com.tngtech.archunit:archunit-junit5:1.4.1",
   "com.uber.nullaway:nullaway:0.12.10",
   "edu.berkeley.cs.jqf:jqf-fuzz:1.7", // jqf-fuzz version 1.8+ requires Java 11+
