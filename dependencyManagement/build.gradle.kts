@@ -16,7 +16,7 @@ val mockitoVersion = "4.11.0"
 val slf4jVersion = "2.0.17"
 val opencensusVersion = "0.31.1"
 val prometheusServerVersion = "1.3.10"
-val armeriaVersion = "1.33.3"
+val armeriaVersion = "1.33.4"
 val junitVersion = "5.13.4"
 val okhttpVersion = "5.1.0"
 
@@ -80,7 +80,7 @@ val DEPENDENCIES = listOf(
   "eu.rekawek.toxiproxy:toxiproxy-java:2.1.11",
   "io.github.netmikey.logunit:logunit-jul:2.0.0",
   "io.jaegertracing:jaeger-client:1.8.1",
-  "io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:1.49.0-alpha",
+  "io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:1.50.0-alpha",
   "io.opentelemetry.semconv:opentelemetry-semconv-incubating:1.37.0-alpha",
   "io.opentelemetry.proto:opentelemetry-proto:1.8.0-alpha",
   "io.opentracing:opentracing-api:0.33.0",
