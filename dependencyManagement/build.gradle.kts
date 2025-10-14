@@ -18,7 +18,7 @@ val opencensusVersion = "0.31.1"
 val prometheusServerVersion = "1.3.10"
 val armeriaVersion = "1.33.4"
 val junitVersion = "5.13.4"
-val okhttpVersion = "5.1.0"
+val okhttpVersion = "5.2.1"
 
 val DEPENDENCY_BOMS = listOf(
   // for some reason boms show up as runtime dependencies in license and vulnerability scans
@@ -30,8 +30,8 @@ val DEPENDENCY_BOMS = listOf(
   "com.google.guava:guava-bom:33.5.0-jre",
   "com.google.protobuf:protobuf-bom:4.32.1",
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
-  "com.squareup.okio:okio-bom:3.16.0", // applies to transitive dependencies of okhttp
-  "io.grpc:grpc-bom:1.75.0",
+  "com.squareup.okio:okio-bom:3.16.1", // applies to transitive dependencies of okhttp
+  "io.grpc:grpc-bom:1.76.0",
   "io.netty:netty-bom:4.2.6.Final",
   "io.zipkin.brave:brave-bom:6.3.0",
   "io.zipkin.reporter2:zipkin-reporter-bom:3.5.1",
@@ -89,7 +89,7 @@ val DEPENDENCIES = listOf(
   "nl.jqno.equalsverifier:equalsverifier:3.19.4",
   "org.awaitility:awaitility:4.3.0",
   "org.bouncycastle:bcpkix-jdk15on:1.70",
-  "org.codehaus.mojo:animal-sniffer-annotations:1.24",
+  "org.codehaus.mojo:animal-sniffer-annotations:1.26",
   "org.jctools:jctools-core:4.0.5",
   "org.junit-pioneer:junit-pioneer:1.9.1",
   "org.mock-server:mockserver-netty:5.15.0:shaded",
