@@ -18,7 +18,7 @@ val opencensusVersion = "0.31.1"
 val prometheusServerVersion = "1.3.10"
 val armeriaVersion = "1.33.4"
 val junitVersion = "5.13.4"
-val okhttpVersion = "5.2.1"
+val okhttpVersion = "5.3.0"
 
 val DEPENDENCY_BOMS = listOf(
   // for some reason boms show up as runtime dependencies in license and vulnerability scans
@@ -26,7 +26,7 @@ val DEPENDENCY_BOMS = listOf(
   // (which is EPL licensed) or armeria bom (which is Apache licensed but is getting flagged
   // by FOSSA for containing EPL-licensed)
 
-  "com.fasterxml.jackson:jackson-bom:2.20.0",
+  "com.fasterxml.jackson:jackson-bom:2.20.1",
   "com.google.guava:guava-bom:33.5.0-jre",
   "com.google.protobuf:protobuf-bom:4.33.0",
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
@@ -75,7 +75,7 @@ val DEPENDENCIES = listOf(
   "com.sun.net.httpserver:http:20070405",
   "com.squareup.okhttp3:okhttp:$okhttpVersion",
   "com.tngtech.archunit:archunit-junit5:1.4.1",
-  "com.uber.nullaway:nullaway:0.12.10",
+  "com.uber.nullaway:nullaway:0.12.11",
   "edu.berkeley.cs.jqf:jqf-fuzz:1.7", // jqf-fuzz version 1.8+ requires Java 11+
   "eu.rekawek.toxiproxy:toxiproxy-java:2.1.11",
   "io.github.netmikey.logunit:logunit-jul:2.0.0",
