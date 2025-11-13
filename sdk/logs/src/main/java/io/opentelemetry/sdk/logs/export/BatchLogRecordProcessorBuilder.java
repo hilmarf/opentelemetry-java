@@ -9,10 +9,14 @@ import static io.opentelemetry.api.internal.Utils.checkArgument;
 import static java.util.Objects.requireNonNull;
 
 import io.opentelemetry.api.metrics.MeterProvider;
+import io.opentelemetry.sdk.logs.data.LogRecordData;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
 /**
  * Builder class for {@link BatchLogRecordProcessor}.
@@ -38,6 +42,8 @@ public final class BatchLogRecordProcessorBuilder {
   private int maxExportBatchSize = DEFAULT_MAX_EXPORT_BATCH_SIZE;
   private long exporterTimeoutNanos = TimeUnit.MILLISECONDS.toNanos(DEFAULT_EXPORT_TIMEOUT_MILLIS);
   private MeterProvider meterProvider = MeterProvider.noop();
+
+  @Nullable private Consumer<Collection<LogRecordData>> errorConsumer;
 
   BatchLogRecordProcessorBuilder(LogRecordExporter logRecordExporter) {
     this.logRecordExporter = requireNonNull(logRecordExporter, "logRecordExporter");
@@ -142,6 +148,18 @@ public final class BatchLogRecordProcessorBuilder {
     return this;
   }
 
+  /**
+   * Sets the error consumer to handle failed log record exports.
+   *
+   * @param errorConsumer the consumer to handle collections of failed LogRecordData
+   * @return this builder
+   */
+  public BatchLogRecordProcessorBuilder setErrorConsumer(
+      Consumer<Collection<LogRecordData>> errorConsumer) {
+    this.errorConsumer = errorConsumer;
+    return this;
+  }
+
   // Visible for testing
   int getMaxExportBatchSize() {
     return maxExportBatchSize;
@@ -167,6 +185,7 @@ public final class BatchLogRecordProcessorBuilder {
         scheduleDelayNanos,
         maxQueueSize,
         maxExportBatchSize,
-        exporterTimeoutNanos);
+        exporterTimeoutNanos,
+        errorConsumer);
   }
 }
