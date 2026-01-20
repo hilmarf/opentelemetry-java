@@ -26,7 +26,7 @@ val DEPENDENCY_BOMS = listOf(
   // (which is EPL licensed) or armeria bom (which is Apache licensed but is getting flagged
   // by FOSSA for containing EPL-licensed)
 
-  "com.fasterxml.jackson:jackson-bom:2.20.1",
+  "com.fasterxml.jackson:jackson-bom:2.21.0",
   "com.google.guava:guava-bom:33.5.0-jre",
   "com.google.protobuf:protobuf-bom:4.33.4",
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
@@ -89,7 +89,7 @@ val DEPENDENCIES = listOf(
   "nl.jqno.equalsverifier:equalsverifier:3.19.4",
   "org.awaitility:awaitility:4.3.0",
   "org.bouncycastle:bcpkix-jdk15on:1.70",
-  "org.codehaus.mojo:animal-sniffer-annotations:1.26",
+  "org.codehaus.mojo:animal-sniffer-annotations:1.27",
   "org.jctools:jctools-core:4.0.5",
   "org.junit-pioneer:junit-pioneer:1.9.1",
   "org.mock-server:mockserver-netty:5.15.0:shaded",
