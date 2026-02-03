@@ -82,6 +82,11 @@ class DeclarativeConfigurationCreateTest {
           new String(Files.readAllBytes(example.toPath()), StandardCharsets.UTF_8);
       String rewrittenExampleContent =
           exampleContent
+              // TODO: remove jaeger, ottrace workarounds after next release
+              .replaceAll(".*- jaeger:.*\n", "")
+              .replaceAll("jaeger", "")
+              .replaceAll(".*- ottrace:.*\n", "")
+              .replaceAll("ottrace", "")
               .replaceAll(
                   "ca_file: .*\n",
                   "ca_file: " + certificatePath.replace("\\", "\\\\") + System.lineSeparator())
