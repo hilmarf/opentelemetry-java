@@ -16,7 +16,7 @@ val mockitoVersion = "4.11.0"
 val slf4jVersion = "2.0.17"
 val opencensusVersion = "0.31.1"
 val prometheusServerVersion = "1.3.10"
-val armeriaVersion = "1.35.0"
+val armeriaVersion = "1.36.0"
 val junitVersion = "5.14.2"
 val okhttpVersion = "5.3.2"
 
@@ -32,7 +32,7 @@ val DEPENDENCY_BOMS = listOf(
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
   "com.squareup.okio:okio-bom:3.16.4", // applies to transitive dependencies of okhttp
   "io.grpc:grpc-bom:1.79.0",
-  "io.netty:netty-bom:4.2.9.Final",
+  "io.netty:netty-bom:4.2.10.Final",
   "io.zipkin.brave:brave-bom:6.3.0",
   "io.zipkin.reporter2:zipkin-reporter-bom:3.5.1",
   "org.assertj:assertj-bom:3.27.7",
