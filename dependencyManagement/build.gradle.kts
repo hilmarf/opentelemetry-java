@@ -26,7 +26,7 @@ val DEPENDENCY_BOMS = listOf(
   // (which is EPL licensed) or armeria bom (which is Apache licensed but is getting flagged
   // by FOSSA for containing EPL-licensed)
 
-  "com.fasterxml.jackson:jackson-bom:2.21.0",
+  "com.fasterxml.jackson:jackson-bom:2.21.1",
   "com.google.guava:guava-bom:33.5.0-jre",
   "com.google.protobuf:protobuf-bom:4.33.5",
   "com.squareup.okhttp3:okhttp-bom:$okhttpVersion",
@@ -69,7 +69,7 @@ val DEPENDENCIES = listOf(
   "io.prometheus:prometheus-metrics-exposition-formats-no-protobuf:${prometheusServerVersion}",
   "javax.annotation:javax.annotation-api:1.3.2",
   "com.github.stefanbirkner:system-rules:1.19.0",
-  "com.google.api.grpc:proto-google-common-protos:2.65.1",
+  "com.google.api.grpc:proto-google-common-protos:2.66.0",
   "com.google.code.findbugs:jsr305:3.0.2",
   "com.google.guava:guava-beta-checker:1.0",
   "com.sun.net.httpserver:http:20070405",
@@ -81,7 +81,7 @@ val DEPENDENCIES = listOf(
   "io.github.netmikey.logunit:logunit-jul:2.0.0",
   "io.jaegertracing:jaeger-client:1.8.1",
   "io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:1.54.0-alpha",
-  "io.opentelemetry.semconv:opentelemetry-semconv-incubating:1.39.0-alpha",
+  "io.opentelemetry.semconv:opentelemetry-semconv-incubating:1.40.0-alpha",
   "io.opentelemetry.proto:opentelemetry-proto:1.9.0-alpha",
   "io.opentracing:opentracing-api:0.33.0",
   "io.opentracing:opentracing-noop:0.33.0",
