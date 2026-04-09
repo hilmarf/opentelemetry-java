@@ -20,8 +20,8 @@ import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.SpanContext;
 import io.opentelemetry.api.trace.TraceFlags;
 import io.opentelemetry.api.trace.TraceState;
+import io.opentelemetry.common.ComponentLoader;
 import io.opentelemetry.context.Context;
-import io.opentelemetry.sdk.autoconfigure.internal.SpiHelper;
 import io.opentelemetry.sdk.common.internal.IncludeExcludePredicate;
 import io.opentelemetry.sdk.extension.incubator.fileconfig.ComposableRuleBasedSamplerFactory.AttributeMatcher;
 import io.opentelemetry.sdk.extension.incubator.fileconfig.ComposableRuleBasedSamplerFactory.DeclarativeConfigSamplingPredicate;
@@ -48,7 +48,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 class ComposableRuleBasedSamplerFactoryTest {
 
   private final DeclarativeConfigContext context =
-      new DeclarativeConfigContext(SpiHelper.create(SamplerFactoryTest.class.getClassLoader()));
+      new DeclarativeConfigContext(ComponentLoader.forClassLoader(getClass().getClassLoader()));
 
   @ParameterizedTest
   @MethodSource("createTestCases")
@@ -162,7 +162,7 @@ class ComposableRuleBasedSamplerFactoryTest {
   private static final AttributeKey<String> HTTP_PATH = AttributeKey.stringKey("http.path");
 
   @ParameterizedTest
-  @MethodSource("declarativeCOnfigSamplingPredicateArgs")
+  @MethodSource("declarativeConfigSamplingPredicateArgs")
   void declarativeConfigSamplingPredicate(
       DeclarativeConfigSamplingPredicate predicate,
       Context context,
@@ -174,7 +174,7 @@ class ComposableRuleBasedSamplerFactoryTest {
   }
 
   @SuppressWarnings("unused")
-  private static Stream<Arguments> declarativeCOnfigSamplingPredicateArgs() {
+  private static Stream<Arguments> declarativeConfigSamplingPredicateArgs() {
     DeclarativeConfigSamplingPredicate matchAll =
         new DeclarativeConfigSamplingPredicate(null, null, null, null);
     DeclarativeConfigSamplingPredicate valuesMatcher =
