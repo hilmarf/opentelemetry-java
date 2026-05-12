@@ -9,7 +9,7 @@ rootProject.extra["versions"] = dependencyVersions
 
 
 val autoValueVersion = "1.11.1"
-val errorProneVersion = "2.48.0"
+val errorProneVersion = "2.49.0"
 val jmhVersion = "1.37"
 // Mockito 5.x.x requires Java 11 https://github.com/mockito/mockito/releases/tag/v5.0.0
 val mockitoVersion = "4.11.0"
@@ -36,6 +36,7 @@ val DEPENDENCY_BOMS = listOf(
   "io.zipkin.brave:brave-bom:6.3.1",
   "io.zipkin.reporter2:zipkin-reporter-bom:3.5.3",
   "org.assertj:assertj-bom:3.27.7",
+  "org.osgi:org.osgi.test.bom:1.3.0",
   "org.testcontainers:testcontainers-bom:2.0.5",
   "org.snakeyaml:snakeyaml-engine:2.10"
 )
@@ -88,11 +89,13 @@ val DEPENDENCIES = listOf(
   "io.opentracing:opentracing-noop:0.33.0",
   "junit:junit:4.13.2",
   "nl.jqno.equalsverifier:equalsverifier:3.19.4",
+  "org.apache.felix:org.apache.felix.framework:7.0.5",
   "org.awaitility:awaitility:4.3.0",
   "org.codehaus.mojo:animal-sniffer-annotations:1.27",
   "org.jctools:jctools-core:4.0.6",
   "org.junit-pioneer:junit-pioneer:1.9.1",
   "org.mock-server:mockserver-netty:5.15.0:shaded",
+  "org.osgi:osgi.core:8.0.0",
   "org.skyscreamer:jsonassert:1.5.3",
   "com.android.tools:desugar_jdk_libs:2.1.5",
 )
