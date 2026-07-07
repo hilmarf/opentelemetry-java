@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.IncludeExcludeModel;
 import java.util.List;
@@ -19,36 +18,33 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalResourceDetectionModel {
 
-  @JsonProperty("attributes")
-  @Nullable
-  private IncludeExcludeModel attributes;
+  @Nullable private IncludeExcludeModel attributes;
+  @Nullable private List<ExperimentalResourceDetectorModel> detectors;
 
   /**
-   * Configure resource detectors. Resource detector names are dependent on the SDK language
-   * ecosystem. Please consult documentation for each respective language. If omitted, no resource
-   * detectors are enabled.
+   * Configure attributes provided by resource detectors.
+   *
+   * <p>If omitted, all attributes from resource detectors are added.
    */
-  @JsonProperty("detectors")
-  @JsonPropertyDescription(
-      "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n")
-  @Nullable
-  private List<ExperimentalResourceDetectorModel> detectors;
-
   @JsonProperty("attributes")
   @Nullable
   public IncludeExcludeModel getAttributes() {
     return attributes;
   }
 
+  @JsonProperty("attributes")
   public ExperimentalResourceDetectionModel withAttributes(IncludeExcludeModel attributes) {
     this.attributes = attributes;
     return this;
   }
 
   /**
-   * Configure resource detectors. Resource detector names are dependent on the SDK language
-   * ecosystem. Please consult documentation for each respective language. If omitted, no resource
-   * detectors are enabled.
+   * Configure resource detectors.
+   *
+   * <p>Resource detector names are dependent on the SDK language ecosystem. Please consult
+   * documentation for each respective language.
+   *
+   * <p>If omitted, no resource detectors are enabled.
    */
   @JsonProperty("detectors")
   @Nullable
@@ -56,6 +52,7 @@ public class ExperimentalResourceDetectionModel {
     return detectors;
   }
 
+  @JsonProperty("detectors")
   public ExperimentalResourceDetectionModel withDetectors(
       List<ExperimentalResourceDetectorModel> detectors) {
     this.detectors = detectors;

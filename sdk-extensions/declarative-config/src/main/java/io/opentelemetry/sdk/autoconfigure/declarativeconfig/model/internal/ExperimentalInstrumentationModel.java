@@ -18,192 +18,262 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalInstrumentationModel {
 
-  @JsonProperty("general")
-  @Nullable
-  private ExperimentalGeneralInstrumentationModel general;
+  @Nullable private ExperimentalGeneralInstrumentationModel general;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel cpp;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel dotnet;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel erlang;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel go;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel java;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel js;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel php;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel python;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel ruby;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel rust;
+  @Nullable private ExperimentalLanguageSpecificInstrumentationModel swift;
 
-  @JsonProperty("cpp")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel cpp;
-
-  @JsonProperty("dotnet")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel dotnet;
-
-  @JsonProperty("erlang")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel erlang;
-
-  @JsonProperty("go")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel go;
-
-  @JsonProperty("java")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel java;
-
-  @JsonProperty("js")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel js;
-
-  @JsonProperty("php")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel php;
-
-  @JsonProperty("python")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel python;
-
-  @JsonProperty("ruby")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel ruby;
-
-  @JsonProperty("rust")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel rust;
-
-  @JsonProperty("swift")
-  @Nullable
-  private ExperimentalLanguageSpecificInstrumentationModel swift;
-
+  /**
+   * Configure general SemConv options that may apply to multiple languages and instrumentations.
+   *
+   * <p>Instrumenation may merge general config options with the language specific configuration at
+   * .instrumentation.<language>.
+   *
+   * <p>If omitted, default values as described in ExperimentalGeneralInstrumentation are used.
+   */
   @JsonProperty("general")
   @Nullable
   public ExperimentalGeneralInstrumentationModel getGeneral() {
     return general;
   }
 
+  @JsonProperty("general")
   public ExperimentalInstrumentationModel withGeneral(
       ExperimentalGeneralInstrumentationModel general) {
     this.general = general;
     return this;
   }
 
+  /**
+   * Configure C++ language-specific instrumentation libraries.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("cpp")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getCpp() {
     return cpp;
   }
 
+  @JsonProperty("cpp")
   public ExperimentalInstrumentationModel withCpp(
       ExperimentalLanguageSpecificInstrumentationModel cpp) {
     this.cpp = cpp;
     return this;
   }
 
+  /**
+   * Configure .NET language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("dotnet")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getDotnet() {
     return dotnet;
   }
 
+  @JsonProperty("dotnet")
   public ExperimentalInstrumentationModel withDotnet(
       ExperimentalLanguageSpecificInstrumentationModel dotnet) {
     this.dotnet = dotnet;
     return this;
   }
 
+  /**
+   * Configure Erlang language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("erlang")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getErlang() {
     return erlang;
   }
 
+  @JsonProperty("erlang")
   public ExperimentalInstrumentationModel withErlang(
       ExperimentalLanguageSpecificInstrumentationModel erlang) {
     this.erlang = erlang;
     return this;
   }
 
+  /**
+   * Configure Go language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("go")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getGo() {
     return go;
   }
 
+  @JsonProperty("go")
   public ExperimentalInstrumentationModel withGo(
       ExperimentalLanguageSpecificInstrumentationModel go) {
     this.go = go;
     return this;
   }
 
+  /**
+   * Configure Java language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("java")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getJava() {
     return java;
   }
 
+  @JsonProperty("java")
   public ExperimentalInstrumentationModel withJava(
       ExperimentalLanguageSpecificInstrumentationModel java) {
     this.java = java;
     return this;
   }
 
+  /**
+   * Configure JavaScript language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("js")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getJs() {
     return js;
   }
 
+  @JsonProperty("js")
   public ExperimentalInstrumentationModel withJs(
       ExperimentalLanguageSpecificInstrumentationModel js) {
     this.js = js;
     return this;
   }
 
+  /**
+   * Configure PHP language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("php")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getPhp() {
     return php;
   }
 
+  @JsonProperty("php")
   public ExperimentalInstrumentationModel withPhp(
       ExperimentalLanguageSpecificInstrumentationModel php) {
     this.php = php;
     return this;
   }
 
+  /**
+   * Configure Python language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("python")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getPython() {
     return python;
   }
 
+  @JsonProperty("python")
   public ExperimentalInstrumentationModel withPython(
       ExperimentalLanguageSpecificInstrumentationModel python) {
     this.python = python;
     return this;
   }
 
+  /**
+   * Configure Ruby language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("ruby")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getRuby() {
     return ruby;
   }
 
+  @JsonProperty("ruby")
   public ExperimentalInstrumentationModel withRuby(
       ExperimentalLanguageSpecificInstrumentationModel ruby) {
     this.ruby = ruby;
     return this;
   }
 
+  /**
+   * Configure Rust language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("rust")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getRust() {
     return rust;
   }
 
+  @JsonProperty("rust")
   public ExperimentalInstrumentationModel withRust(
       ExperimentalLanguageSpecificInstrumentationModel rust) {
     this.rust = rust;
     return this;
   }
 
+  /**
+   * Configure Swift language-specific instrumentation libraries.
+   *
+   * <p>Each entry's key identifies a particular instrumentation library. The corresponding value
+   * configures it.
+   *
+   * <p>If omitted, instrumentation defaults are used.
+   */
   @JsonProperty("swift")
   @Nullable
   public ExperimentalLanguageSpecificInstrumentationModel getSwift() {
     return swift;
   }
 
+  @JsonProperty("swift")
   public ExperimentalInstrumentationModel withSwift(
       ExperimentalLanguageSpecificInstrumentationModel swift) {
     this.swift = swift;

@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
 import javax.annotation.Generated;
@@ -18,35 +17,40 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalMeterConfiguratorModel {
 
-  @JsonProperty("default_config")
-  @Nullable
-  private ExperimentalMeterConfigModel defaultConfig;
+  @Nullable private ExperimentalMeterConfigModel defaultConfig;
+  @Nullable private List<ExperimentalMeterMatcherAndConfigModel> meters;
 
-  /** Configure meters. If omitted, all meters used .default_config. */
-  @JsonProperty("meters")
-  @JsonPropertyDescription("Configure meters.\nIf omitted, all meters used .default_config.\n")
-  @Nullable
-  private List<ExperimentalMeterMatcherAndConfigModel> meters;
-
+  /**
+   * Configure the default meter config used there is no matching entry in
+   * .meter_configurator/development.meters.
+   *
+   * <p>If omitted, unmatched .meters use default values as described in ExperimentalMeterConfig.
+   */
   @JsonProperty("default_config")
   @Nullable
   public ExperimentalMeterConfigModel getDefaultConfig() {
     return defaultConfig;
   }
 
+  @JsonProperty("default_config")
   public ExperimentalMeterConfiguratorModel withDefaultConfig(
       ExperimentalMeterConfigModel defaultConfig) {
     this.defaultConfig = defaultConfig;
     return this;
   }
 
-  /** Configure meters. If omitted, all meters used .default_config. */
+  /**
+   * Configure meters.
+   *
+   * <p>If omitted, all meters used .default_config.
+   */
   @JsonProperty("meters")
   @Nullable
   public List<ExperimentalMeterMatcherAndConfigModel> getMeters() {
     return meters;
   }
 
+  @JsonProperty("meters")
   public ExperimentalMeterConfiguratorModel withMeters(
       List<ExperimentalMeterMatcherAndConfigModel> meters) {
     this.meters = meters;

@@ -16,16 +16,26 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalDbInstrumentationModel {
 
-  @JsonProperty("semconv")
-  @Nullable
-  private ExperimentalSemconvConfigModel semconv;
+  @Nullable private ExperimentalSemconvConfigModel semconv;
 
+  /**
+   * Configure database semantic convention version and migration behavior.
+   *
+   * <p>This property takes precedence over the
+   * .instrumentation/development.general.stability_opt_in_list setting.
+   *
+   * <p>See database migration: https://opentelemetry.io/docs/specs/semconv/database/
+   *
+   * <p>If omitted, uses the general stability_opt_in_list setting, or instrumentations continue
+   * emitting their default semantic convention version if not set.
+   */
   @JsonProperty("semconv")
   @Nullable
   public ExperimentalSemconvConfigModel getSemconv() {
     return semconv;
   }
 
+  @JsonProperty("semconv")
   public ExperimentalDbInstrumentationModel withSemconv(ExperimentalSemconvConfigModel semconv) {
     this.semconv = semconv;
     return this;

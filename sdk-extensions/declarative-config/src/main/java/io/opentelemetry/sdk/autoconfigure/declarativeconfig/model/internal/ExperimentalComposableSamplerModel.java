@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -21,84 +20,98 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalComposableSamplerModel {
 
-  @JsonProperty("always_off")
-  @Nullable
-  private ExperimentalComposableAlwaysOffSamplerModel alwaysOff;
-
-  @JsonProperty("always_on")
-  @Nullable
-  private ExperimentalComposableAlwaysOnSamplerModel alwaysOn;
-
-  @JsonProperty("parent_threshold")
-  @Nullable
-  private ExperimentalComposableParentThresholdSamplerModel parentThreshold;
-
-  @JsonProperty("probability")
-  @Nullable
-  private ExperimentalComposableProbabilitySamplerModel probability;
-
-  @JsonProperty("rule_based")
-  @Nullable
-  private ExperimentalComposableRuleBasedSamplerModel ruleBased;
-
-  @JsonIgnore
+  @Nullable private ExperimentalComposableAlwaysOffSamplerModel alwaysOff;
+  @Nullable private ExperimentalComposableAlwaysOnSamplerModel alwaysOn;
+  @Nullable private ExperimentalComposableParentThresholdSamplerModel parentThreshold;
+  @Nullable private ExperimentalComposableProbabilitySamplerModel probability;
+  @Nullable private ExperimentalComposableRuleBasedSamplerModel ruleBased;
   private Map<String, ExperimentalComposableSamplerPropertyModel> additionalProperties =
       new LinkedHashMap<String, ExperimentalComposableSamplerPropertyModel>();
 
+  /**
+   * Configure sampler to be always_off.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("always_off")
   @Nullable
   public ExperimentalComposableAlwaysOffSamplerModel getAlwaysOff() {
     return alwaysOff;
   }
 
+  @JsonProperty("always_off")
   public ExperimentalComposableSamplerModel withAlwaysOff(
       ExperimentalComposableAlwaysOffSamplerModel alwaysOff) {
     this.alwaysOff = alwaysOff;
     return this;
   }
 
+  /**
+   * Configure sampler to be always_on.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("always_on")
   @Nullable
   public ExperimentalComposableAlwaysOnSamplerModel getAlwaysOn() {
     return alwaysOn;
   }
 
+  @JsonProperty("always_on")
   public ExperimentalComposableSamplerModel withAlwaysOn(
       ExperimentalComposableAlwaysOnSamplerModel alwaysOn) {
     this.alwaysOn = alwaysOn;
     return this;
   }
 
+  /**
+   * Configure sampler to be parent_threshold.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("parent_threshold")
   @Nullable
   public ExperimentalComposableParentThresholdSamplerModel getParentThreshold() {
     return parentThreshold;
   }
 
+  @JsonProperty("parent_threshold")
   public ExperimentalComposableSamplerModel withParentThreshold(
       ExperimentalComposableParentThresholdSamplerModel parentThreshold) {
     this.parentThreshold = parentThreshold;
     return this;
   }
 
+  /**
+   * Configure sampler to be probability.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("probability")
   @Nullable
   public ExperimentalComposableProbabilitySamplerModel getProbability() {
     return probability;
   }
 
+  @JsonProperty("probability")
   public ExperimentalComposableSamplerModel withProbability(
       ExperimentalComposableProbabilitySamplerModel probability) {
     this.probability = probability;
     return this;
   }
 
+  /**
+   * Configure sampler to be rule_based.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("rule_based")
   @Nullable
   public ExperimentalComposableRuleBasedSamplerModel getRuleBased() {
     return ruleBased;
   }
 
+  @JsonProperty("rule_based")
   public ExperimentalComposableSamplerModel withRuleBased(
       ExperimentalComposableRuleBasedSamplerModel ruleBased) {
     this.ruleBased = ruleBased;
@@ -111,10 +124,6 @@ public class ExperimentalComposableSamplerModel {
   }
 
   @JsonAnySetter
-  public void setAdditionalProperty(String name, ExperimentalComposableSamplerPropertyModel value) {
-    this.additionalProperties.put(name, value);
-  }
-
   public ExperimentalComposableSamplerModel withAdditionalProperty(
       String name, ExperimentalComposableSamplerPropertyModel value) {
     this.additionalProperties.put(name, value);

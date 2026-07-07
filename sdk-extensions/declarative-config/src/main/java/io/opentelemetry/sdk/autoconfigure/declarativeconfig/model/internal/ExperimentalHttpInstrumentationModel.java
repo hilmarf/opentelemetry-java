@@ -16,47 +16,64 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalHttpInstrumentationModel {
 
-  @JsonProperty("semconv")
-  @Nullable
-  private ExperimentalSemconvConfigModel semconv;
+  @Nullable private ExperimentalSemconvConfigModel semconv;
+  @Nullable private ExperimentalHttpClientInstrumentationModel client;
+  @Nullable private ExperimentalHttpServerInstrumentationModel server;
 
-  @JsonProperty("client")
-  @Nullable
-  private ExperimentalHttpClientInstrumentationModel client;
-
-  @JsonProperty("server")
-  @Nullable
-  private ExperimentalHttpServerInstrumentationModel server;
-
+  /**
+   * Configure HTTP semantic convention version and migration behavior.
+   *
+   * <p>This property takes precedence over the
+   * .instrumentation/development.general.stability_opt_in_list setting.
+   *
+   * <p>See HTTP migration:
+   * https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/
+   *
+   * <p>If omitted, uses the general stability_opt_in_list setting, or instrumentations continue
+   * emitting their default semantic convention version if not set.
+   */
   @JsonProperty("semconv")
   @Nullable
   public ExperimentalSemconvConfigModel getSemconv() {
     return semconv;
   }
 
+  @JsonProperty("semconv")
   public ExperimentalHttpInstrumentationModel withSemconv(ExperimentalSemconvConfigModel semconv) {
     this.semconv = semconv;
     return this;
   }
 
+  /**
+   * Configure instrumentations following the http client semantic conventions.
+   *
+   * <p>If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.
+   */
   @JsonProperty("client")
   @Nullable
   public ExperimentalHttpClientInstrumentationModel getClient() {
     return client;
   }
 
+  @JsonProperty("client")
   public ExperimentalHttpInstrumentationModel withClient(
       ExperimentalHttpClientInstrumentationModel client) {
     this.client = client;
     return this;
   }
 
+  /**
+   * Configure instrumentations following the http server semantic conventions.
+   *
+   * <p>If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used.
+   */
   @JsonProperty("server")
   @Nullable
   public ExperimentalHttpServerInstrumentationModel getServer() {
     return server;
   }
 
+  @JsonProperty("server")
   public ExperimentalHttpInstrumentationModel withServer(
       ExperimentalHttpServerInstrumentationModel server) {
     this.server = server;

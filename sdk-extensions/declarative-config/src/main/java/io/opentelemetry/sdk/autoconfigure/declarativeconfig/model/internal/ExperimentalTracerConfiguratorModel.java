@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
 import javax.annotation.Generated;
@@ -18,35 +17,40 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalTracerConfiguratorModel {
 
-  @JsonProperty("default_config")
-  @Nullable
-  private ExperimentalTracerConfigModel defaultConfig;
+  @Nullable private ExperimentalTracerConfigModel defaultConfig;
+  @Nullable private List<ExperimentalTracerMatcherAndConfigModel> tracers;
 
-  /** Configure tracers. If omitted, all tracers use .default_config. */
-  @JsonProperty("tracers")
-  @JsonPropertyDescription("Configure tracers.\nIf omitted, all tracers use .default_config.\n")
-  @Nullable
-  private List<ExperimentalTracerMatcherAndConfigModel> tracers;
-
+  /**
+   * Configure the default tracer config used there is no matching entry in
+   * .tracer_configurator/development.tracers.
+   *
+   * <p>If omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig.
+   */
   @JsonProperty("default_config")
   @Nullable
   public ExperimentalTracerConfigModel getDefaultConfig() {
     return defaultConfig;
   }
 
+  @JsonProperty("default_config")
   public ExperimentalTracerConfiguratorModel withDefaultConfig(
       ExperimentalTracerConfigModel defaultConfig) {
     this.defaultConfig = defaultConfig;
     return this;
   }
 
-  /** Configure tracers. If omitted, all tracers use .default_config. */
+  /**
+   * Configure tracers.
+   *
+   * <p>If omitted, all tracers use .default_config.
+   */
   @JsonProperty("tracers")
   @Nullable
   public List<ExperimentalTracerMatcherAndConfigModel> getTracers() {
     return tracers;
   }
 
+  @JsonProperty("tracers")
   public ExperimentalTracerConfiguratorModel withTracers(
       List<ExperimentalTracerMatcherAndConfigModel> tracers) {
     this.tracers = tracers;

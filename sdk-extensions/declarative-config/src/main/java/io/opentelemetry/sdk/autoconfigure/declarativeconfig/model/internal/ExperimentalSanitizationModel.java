@@ -16,16 +16,20 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalSanitizationModel {
 
-  @JsonProperty("url")
-  @Nullable
-  private ExperimentalUrlSanitizationModel url;
+  @Nullable private ExperimentalUrlSanitizationModel url;
 
+  /**
+   * Configure URL sanitization options.
+   *
+   * <p>If omitted, defaults as described in ExperimentalUrlSanitization are used.
+   */
   @JsonProperty("url")
   @Nullable
   public ExperimentalUrlSanitizationModel getUrl() {
     return url;
   }
 
+  @JsonProperty("url")
   public ExperimentalSanitizationModel withUrl(ExperimentalUrlSanitizationModel url) {
     this.url = url;
     return this;

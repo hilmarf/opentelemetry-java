@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import javax.annotation.Generated;
 import javax.annotation.Nullable;
@@ -17,34 +16,18 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalMeterMatcherAndConfigModel {
 
-  /**
-   * Configure meter names to match. Matching is case-sensitive, evaluated as follows:
-   *
-   * <p>* If the meter name exactly matches. * If the meter name matches the wildcard pattern, where
-   * '?' matches any single character and '*' matches any number of characters including none.
-   * Property is required and must be non-null.
-   *
-   * <p>(Required)
-   */
-  @JsonProperty("name")
-  @JsonPropertyDescription(
-      "Configure meter names to match. Matching is case-sensitive, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n")
-  @Nullable
-  private String name;
-
-  /** (Required) */
-  @JsonProperty("config")
-  @Nullable
-  private ExperimentalMeterConfigModel config;
+  @Nullable private String name;
+  @Nullable private ExperimentalMeterConfigModel config;
 
   /**
    * Configure meter names to match. Matching is case-sensitive, evaluated as follows:
    *
-   * <p>* If the meter name exactly matches. * If the meter name matches the wildcard pattern, where
-   * '?' matches any single character and '*' matches any number of characters including none.
-   * Property is required and must be non-null.
+   * <p>* If the meter name exactly matches.
    *
-   * <p>(Required)
+   * <p>* If the meter name matches the wildcard pattern, where '?' matches any single character and
+   * '*' matches any number of characters including none.
+   *
+   * <p>Property is required and must be non-null.
    */
   @JsonProperty("name")
   @Nullable
@@ -52,18 +35,24 @@ public class ExperimentalMeterMatcherAndConfigModel {
     return name;
   }
 
+  @JsonProperty("name")
   public ExperimentalMeterMatcherAndConfigModel withName(String name) {
     this.name = name;
     return this;
   }
 
-  /** (Required) */
+  /**
+   * The meter config.
+   *
+   * <p>Property is required and must be non-null.
+   */
   @JsonProperty("config")
   @Nullable
   public ExperimentalMeterConfigModel getConfig() {
     return config;
   }
 
+  @JsonProperty("config")
   public ExperimentalMeterMatcherAndConfigModel withConfig(ExperimentalMeterConfigModel config) {
     this.config = config;
     return this;

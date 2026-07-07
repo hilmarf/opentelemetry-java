@@ -7,7 +7,6 @@ package io.opentelemetry.sdk.autoconfigure.declarativeconfig.model.internal;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -21,67 +20,79 @@ import javax.annotation.Nullable;
 @Generated("jsonschema2pojo")
 public class ExperimentalResourceDetectorModel {
 
-  @JsonProperty("container")
-  @Nullable
-  private ExperimentalContainerResourceDetectorModel container;
-
-  @JsonProperty("host")
-  @Nullable
-  private ExperimentalHostResourceDetectorModel host;
-
-  @JsonProperty("process")
-  @Nullable
-  private ExperimentalProcessResourceDetectorModel process;
-
-  @JsonProperty("service")
-  @Nullable
-  private ExperimentalServiceResourceDetectorModel service;
-
-  @JsonIgnore
+  @Nullable private ExperimentalContainerResourceDetectorModel container;
+  @Nullable private ExperimentalHostResourceDetectorModel host;
+  @Nullable private ExperimentalProcessResourceDetectorModel process;
+  @Nullable private ExperimentalServiceResourceDetectorModel service;
   private Map<String, ExperimentalResourceDetectorPropertyModel> additionalProperties =
       new LinkedHashMap<String, ExperimentalResourceDetectorPropertyModel>();
 
+  /**
+   * Enable the container resource detector, which populates container.* attributes.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("container")
   @Nullable
   public ExperimentalContainerResourceDetectorModel getContainer() {
     return container;
   }
 
+  @JsonProperty("container")
   public ExperimentalResourceDetectorModel withContainer(
       ExperimentalContainerResourceDetectorModel container) {
     this.container = container;
     return this;
   }
 
+  /**
+   * Enable the host resource detector, which populates host.* and os.* attributes.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("host")
   @Nullable
   public ExperimentalHostResourceDetectorModel getHost() {
     return host;
   }
 
+  @JsonProperty("host")
   public ExperimentalResourceDetectorModel withHost(ExperimentalHostResourceDetectorModel host) {
     this.host = host;
     return this;
   }
 
+  /**
+   * Enable the process resource detector, which populates process.* attributes.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("process")
   @Nullable
   public ExperimentalProcessResourceDetectorModel getProcess() {
     return process;
   }
 
+  @JsonProperty("process")
   public ExperimentalResourceDetectorModel withProcess(
       ExperimentalProcessResourceDetectorModel process) {
     this.process = process;
     return this;
   }
 
+  /**
+   * Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME
+   * environment variable and service.instance.id.
+   *
+   * <p>If omitted, ignore.
+   */
   @JsonProperty("service")
   @Nullable
   public ExperimentalServiceResourceDetectorModel getService() {
     return service;
   }
 
+  @JsonProperty("service")
   public ExperimentalResourceDetectorModel withService(
       ExperimentalServiceResourceDetectorModel service) {
     this.service = service;
@@ -94,10 +105,6 @@ public class ExperimentalResourceDetectorModel {
   }
 
   @JsonAnySetter
-  public void setAdditionalProperty(String name, ExperimentalResourceDetectorPropertyModel value) {
-    this.additionalProperties.put(name, value);
-  }
-
   public ExperimentalResourceDetectorModel withAdditionalProperty(
       String name, ExperimentalResourceDetectorPropertyModel value) {
     this.additionalProperties.put(name, value);
