@@ -1,0 +1,6 @@
+# .github/pull.yml
+version: "1"
+rules:
+  - base: main
+    upstream: open-telemetry:main
+    mergeMethod: rebase
