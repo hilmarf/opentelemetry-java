@@ -3,6 +3,8 @@ rules:
   - base: main
     upstream: open-telemetry:main
     mergeMethod: rebase
+    conflictReviewers:
+      - hilmarf
 
   - base: upstream
     upstream: open-telemetry:main
