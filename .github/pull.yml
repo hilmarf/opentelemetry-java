@@ -3,8 +3,7 @@ rules:
   - base: main
     upstream: open-telemetry:main
     mergeMethod: rebase
-    conflictReviewers:
-      - name: hilmarf
+
   - base: upstream
     upstream: open-telemetry:main
     mergeMethod: hardreset
